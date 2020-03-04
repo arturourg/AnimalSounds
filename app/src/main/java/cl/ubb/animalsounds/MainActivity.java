@@ -9,10 +9,25 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    //NO TENGO NI PICO IDEA QUE ES ESTO...
+    private final int maxStreams=1;
+    private final int streamType=AudioManager.STREAM_MUSIC;
+    private final int srcQuality=0;
+    private SoundPool soundPool;
+
+    private int idSoundCat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        soundPool = new SoundPool(maxStreams, streamType, srcQuality);
+        idSoundCat = soundPool.load(getApplicationContext(), R.raw.cat,1);
+    }
+
+    public void playCat(View view){
+        soundPool.play(idSoundCat, 1,1,1,0,1);
 
     }
 
